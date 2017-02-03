@@ -5,7 +5,20 @@ import { createStore } from 'redux';
 import firebase from 'firebase';
 import reducers from './reducers';
 
+
 class App extends Component {
+    componentWillMount() {
+        const config = {
+            apiKey: '<YOUR API KEY>',
+            authDomain: '<YOUR AUTH DOMAIN>',
+            databaseURL: '<YOUR DATABASE URL>',
+            storageBucket: '<YOUR STORAGE BUCKET>',
+            messagingSenderId: '<YOUR MESSAGING ID>'
+        };
+
+        firebase.initializeApp(config);
+    }
+
     render() {
         return (
             <Provider store={createStore(reducers)}>
